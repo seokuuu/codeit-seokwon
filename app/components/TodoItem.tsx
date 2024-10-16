@@ -11,7 +11,6 @@ interface TodoItemProps {
 export default function TodoItem({ todo }: TodoItemProps) {
   const toggleComplete = async () => {
     await updateTodo(todo.id, { isCompleted: !todo.isCompleted });
-    // TODO: Update todo list
   };
 
   return (

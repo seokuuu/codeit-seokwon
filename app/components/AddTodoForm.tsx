@@ -11,7 +11,6 @@ export default function AddTodoForm() {
     if (name.trim()) {
       await createTodo(name);
       setName("");
-      // TODO: Update todo list
     }
   };
 
