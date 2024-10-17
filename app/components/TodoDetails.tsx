@@ -83,16 +83,15 @@ export default function TodoDetails({ itemId }: TodoDetailsProps) {
   return (
     <form onSubmit={handleSubmit} className="space-y-4">
       <div>
-        <label htmlFor="name" className="block mb-1">
-          Name
+        <label className="flex items-center">
+          <input
+            type="checkbox"
+            checked={isCompleted}
+            onChange={(e) => setIsCompleted(e.target.checked)}
+            className="mr-2"
+          />
+          {name}
         </label>
-        <input
-          id="name"
-          type="text"
-          value={name}
-          onChange={(e) => setName(e.target.value)}
-          className="w-full p-2 border rounded text-black"
-        />
       </div>
       <div>
         <label htmlFor="memo" className="block mb-1">
@@ -120,17 +119,7 @@ export default function TodoDetails({ itemId }: TodoDetailsProps) {
           <img src={imageUrl} alt="Todo" className="mt-2 max-w-full h-auto" />
         )}
       </div>
-      <div>
-        <label className="flex items-center">
-          <input
-            type="checkbox"
-            checked={isCompleted}
-            onChange={(e) => setIsCompleted(e.target.checked)}
-            className="mr-2"
-          />
-          Completed
-        </label>
-      </div>
+
       <div>
         <button
           type="submit"
