@@ -1,15 +1,18 @@
 "use client";
 
 import { useState } from "react";
-import { createTodo } from "../lib/api";
 
-export default function AddTodoForm() {
+interface AddTodoFormProps {
+  onAddTodo: (name: string) => Promise<void>;
+}
+
+export default function AddTodoForm({ onAddTodo }: AddTodoFormProps) {
   const [name, setName] = useState("");
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     if (name.trim()) {
-      await createTodo(name);
+      await onAddTodo(name);
       setName("");
     }
   };
