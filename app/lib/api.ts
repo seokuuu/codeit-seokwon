@@ -2,7 +2,7 @@ import axios from "axios";
 import { Todo } from "../types/todo";
 
 const API_BASE_URL = "https://assignment-todolist-api.vercel.app/api";
-const TENANT_ID = "your-tenant-id"; // 실제 사용시 적절한 tenant ID로 교체해주세요
+const TENANT_ID = "seokwon";
 
 const api = axios.create({
   baseURL: `${API_BASE_URL}/${TENANT_ID}`,
@@ -12,6 +12,11 @@ export const getTodos = async (page = 1, pageSize = 10) => {
   const response = await api.get<Todo[]>(
     `/items?page=${page}&pageSize=${pageSize}`
   );
+  return response.data;
+};
+
+export const getTodoById = async (id: number) => {
+  const response = await api.get<Todo>(`/items/${id}`);
   return response.data;
 };
 

@@ -1,6 +1,8 @@
+// src/app/layout.tsx
 import "./globals.css";
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
+import Header from "./components/Header";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -17,7 +19,8 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={`${inter.className} bg-slate-900 text-white`}>
-        {children}
+        <Header />
+        <main className="container mx-auto p-4">{children}</main>
       </body>
     </html>
   );

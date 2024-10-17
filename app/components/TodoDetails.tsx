@@ -3,7 +3,7 @@
 import { useState, useEffect } from "react";
 import { useRouter } from "next/navigation";
 import { Todo } from "../types/todo";
-import { getTodos, updateTodo, deleteTodo, uploadImage } from "../lib/api";
+import { getTodoById, updateTodo, deleteTodo, uploadImage } from "../lib/api";
 
 interface TodoDetailsProps {
   itemId: number;
@@ -13,16 +13,22 @@ export default function TodoDetails({ itemId }: TodoDetailsProps) {
   const [todo, setTodo] = useState<Todo | null>(null);
   const [name, setName] = useState("");
   const [memo, setMemo] = useState("");
+  const [imageUrl, setImageUrl] = useState("");
+  const [isCompleted, setIsCompleted] = useState(false);
   const router = useRouter();
 
   useEffect(() => {
     const fetchTodo = async () => {
-      const todos = await getTodos();
-      const foundTodo = todos.find((t: { id: number }) => t.id === itemId);
-      if (foundTodo) {
-        setTodo(foundTodo);
-        setName(foundTodo.name);
-        setMemo(foundTodo.memo || "");
+      try {
+        const fetchedTodo = await getTodoById(itemId);
+        setTodo(fetchedTodo);
+        setName(fetchedTodo.name);
+        setMemo(fetchedTodo.memo || "");
+        setImageUrl(fetchedTodo.imageUrl || "");
+        setIsCompleted(fetchedTodo.isCompleted);
+      } catch (error) {
+        console.error("Failed to fetch todo:", error);
+        // 에러 처리 (예: 사용자에게 알림)
       }
     };
     fetchTodo();
@@ -31,24 +37,44 @@ export default function TodoDetails({ itemId }: TodoDetailsProps) {
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     if (todo) {
-      await updateTodo(todo.id, { name, memo });
-      router.push("/");
+      try {
+        const updatedTodo = await updateTodo(todo.id, {
+          name,
+          memo,
+          imageUrl,
+          isCompleted,
+        });
+        setTodo(updatedTodo);
+        router.push("/");
+      } catch (error) {
+        console.error("Failed to update todo:", error);
+        // 에러 처리 (예: 사용자에게 알림)
+      }
     }
   };
 
   const handleDelete = async () => {
     if (todo) {
-      await deleteTodo(todo.id);
-      router.push("/");
+      try {
+        await deleteTodo(todo.id);
+        router.push("/");
+      } catch (error) {
+        console.error("Failed to delete todo:", error);
+        // 에러 처리 (예: 사용자에게 알림)
+      }
     }
   };
 
   const handleImageUpload = async (e: React.ChangeEvent<HTMLInputElement>) => {
     const file = e.target.files?.[0];
-    if (file && todo) {
-      const { url } = await uploadImage(file);
-      await updateTodo(todo.id, { imageUrl: url });
-      setTodo({ ...todo, imageUrl: url });
+    if (file) {
+      try {
+        const { url } = await uploadImage(file);
+        setImageUrl(url);
+      } catch (error) {
+        console.error("Failed to upload image:", error);
+        // 에러 처리 (예: 사용자에게 알림)
+      }
     }
   };
 
@@ -90,13 +116,20 @@ export default function TodoDetails({ itemId }: TodoDetailsProps) {
           onChange={handleImageUpload}
           className="w-full p-2 border rounded"
         />
-        {todo.imageUrl && (
-          <img
-            src={todo.imageUrl}
-            alt="Todo"
-            className="mt-2 max-w-full h-auto"
-          />
+        {imageUrl && (
+          <img src={imageUrl} alt="Todo" className="mt-2 max-w-full h-auto" />
         )}
+      </div>
+      <div>
+        <label className="flex items-center">
+          <input
+            type="checkbox"
+            checked={isCompleted}
+            onChange={(e) => setIsCompleted(e.target.checked)}
+            className="mr-2"
+          />
+          Completed
+        </label>
       </div>
       <div>
         <button

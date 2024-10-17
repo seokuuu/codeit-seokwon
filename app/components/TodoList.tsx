@@ -16,20 +16,26 @@ export default function TodoList() {
     fetchTodos();
   }, []);
 
+  const handleTodoUpdate = (updatedTodo: Todo) => {
+    setTodos((prevTodos) =>
+      prevTodos.map((todo) => (todo.id === updatedTodo.id ? updatedTodo : todo))
+    );
+  };
+
   return (
     <div>
       <h2 className="text-xl font-bold mb-2">In Progress</h2>
       {todos
         .filter((todo) => !todo.isCompleted)
         .map((todo) => (
-          <TodoItem key={todo.id} todo={todo} />
+          <TodoItem key={todo.id} todo={todo} onUpdate={handleTodoUpdate} />
         ))}
 
       <h2 className="text-xl font-bold mb-2 mt-4">Completed</h2>
       {todos
         .filter((todo) => todo.isCompleted)
         .map((todo) => (
-          <TodoItem key={todo.id} todo={todo} />
+          <TodoItem key={todo.id} todo={todo} onUpdate={handleTodoUpdate} />
         ))}
     </div>
   );
