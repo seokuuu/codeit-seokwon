@@ -23,7 +23,6 @@ export default function Home() {
       setTodos((prevTodos) => [...prevTodos, newTodo]);
     } catch (error) {
       console.error("Failed to add todo:", error);
-      // 에러 처리 (예: 사용자에게 알림)
     }
   };
 
