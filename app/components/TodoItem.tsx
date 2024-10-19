@@ -27,16 +27,35 @@ export default function TodoItem({ todo, onUpdate }: TodoItemProps) {
   };
 
   return (
-    <div className="flex items-center mb-2">
-      <input
-        type="checkbox"
-        checked={isCompleted}
-        onChange={toggleComplete}
-        className="mr-2"
-      />
+    <div
+      className={`flex items-center  mb-2 p-2 rounded border-2 border-black rounded-3xl ${
+        isCompleted ? "bg-violet-100" : ""
+      }`}
+    >
+      <div className="relative top-1 mr-2">
+        <input
+          type="checkbox"
+          checked={isCompleted}
+          onChange={toggleComplete}
+          className="appearance-none w-5 h-5 border border-black checked:border-violet-600 rounded-full checked:bg-violet-600 transition-all duration-200 ease-in-out cursor-pointer"
+        />
+        {isCompleted && (
+          <svg
+            className="absolute w-3 h-3 text-white top-1 left-1 pointer-events-none"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            strokeWidth="4"
+            strokeLinecap="round"
+            strokeLinejoin="round"
+          >
+            <polyline points="20 6 9 17 4 12"></polyline>
+          </svg>
+        )}
+      </div>
       <Link
         href={`/items/${todo.id}`}
-        className="text-blue-300 hover:underline"
+        className={`hover:underline ${isCompleted ? "line-through" : ""}`}
       >
         {todo.name}
       </Link>

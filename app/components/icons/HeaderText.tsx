@@ -16,14 +16,14 @@ const HeaderText: React.FC<CheckIconProps> = ({ className }) => {
       xmlns="http://www.w3.org/2000/svg"
     >
       <path
-        fill-rule="evenodd"
-        clip-rule="evenodd"
+        fillRule="evenodd"
+        clipRule="evenodd"
         d="M72.4875 16.3812C74.2266 16.3695 75.6321 14.9852 75.6207 13.2966C75.609 11.5575 74.1848 10.1523 72.4457 10.164C70.7571 10.1753 69.3918 11.5993 69.4035 13.3384C69.4149 15.027 70.7989 16.3925 72.4875 16.3812Z"
         fill="#6500C3"
       />
       <path
-        fill-rule="evenodd"
-        clip-rule="evenodd"
+        fillRule="evenodd"
+        clipRule="evenodd"
         d="M75.5608 24.5705C75.2642 23.5646 74.4504 22.3681 72.2618 22.3828C70.5733 22.3942 69.205 23.7782 69.2164 25.4668C69.227 27.0491 70.4325 28.3493 71.9892 28.4984L72.0144 32.2505L72.491 31.9468C74.9802 30.3664 76.184 26.6832 75.5608 24.5705Z"
         fill="#6500C3"
       />
