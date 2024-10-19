@@ -6,7 +6,7 @@ export default function TodoDetailsPage({
   params: { itemId: string };
 }) {
   return (
-    <main className="container mx-auto p-4">
+    <main className="container mx-auto ">
       <TodoDetails itemId={Number(params.itemId)} />
     </main>
   );

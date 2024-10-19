@@ -2,6 +2,8 @@
 
 import { useState } from "react";
 import { useMobile } from "../lib/hooks/useMobile";
+import CustomButton from "./common/CustomButton";
+import PlusIcon from "./icons/PlusIcon";
 
 interface AddTodoFormProps {
   onAddTodo: (name: string) => Promise<void>;
@@ -21,7 +23,7 @@ export default function AddTodoForm({ onAddTodo }: AddTodoFormProps) {
   };
 
   return (
-    <form onSubmit={handleSubmit} className="mb-4 w-full">
+    <form onSubmit={handleSubmit} className="flex my-4 w-full">
       <input
         type="text"
         value={name}
@@ -29,12 +31,20 @@ export default function AddTodoForm({ onAddTodo }: AddTodoFormProps) {
         placeholder="할 일을 입력해주세요"
         className="p-2 pl-4 rounded mr-2 desktop:w-[90%] tablet:w-[80%] mobile:w-[85%] common-border  rounded-xl"
       />
-      <button
+      <CustomButton
         type="submit"
-        className="gap-1 p-2 px-3 rounded mr-2 min-w-fit text-black common-border  rounded-xl"
+        bgColor=""
+        textColor="text-black"
+        onClick={() => console.log("Button clicked")}
       >
-        {isMobile ? "+" : "+ 추가하기"}
-      </button>
+        {isMobile ? (
+          <PlusIcon />
+        ) : (
+          <>
+            <PlusIcon /> 추가하기
+          </>
+        )}
+      </CustomButton>
     </form>
   );
 }

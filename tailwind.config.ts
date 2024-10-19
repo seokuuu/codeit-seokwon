@@ -31,8 +31,10 @@ module.exports = {
           300: "#BEF264",
         },
         amber: {
+          200: "#FDE68A",
           800: "#92400E",
         },
+        bgPrimary: "#FFFFFF",
       },
     },
   },

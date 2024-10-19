@@ -33,7 +33,7 @@ export default function Home() {
   };
 
   return (
-    <main className="container mx-auto py-4">
+    <main className="container">
       <AddTodoForm onAddTodo={handleAddTodo} />
       <TodoList todos={todos} onUpdateTodo={handleTodoUpdate} />
     </main>

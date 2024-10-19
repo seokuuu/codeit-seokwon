@@ -1,9 +1,15 @@
 "use client";
 
-import { useState, useEffect } from "react";
 import { useRouter } from "next/navigation";
+import { useEffect, useState } from "react";
+import { deleteTodo, getTodoById, updateTodo, uploadImage } from "../lib/api";
 import { Todo } from "../types/todo";
-import { getTodoById, updateTodo, deleteTodo, uploadImage } from "../lib/api";
+import CheckboxInput from "./common/CheckboxInput";
+import CustomButton from "./common/CustomButton";
+import CheckIcon from "./icons/CheckIcon";
+import DeleteIcon from "./icons/DeleteIcon";
+import ImageSection from "./ImageSection";
+import MemoSection from "./MemoSection";
 
 interface TodoDetailsProps {
   itemId: number;
@@ -28,7 +34,6 @@ export default function TodoDetails({ itemId }: TodoDetailsProps) {
         setIsCompleted(fetchedTodo.isCompleted);
       } catch (error) {
         console.error("Failed to fetch todo:", error);
-        // 에러 처리 (예: 사용자에게 알림)
       }
     };
     fetchTodo();
@@ -48,7 +53,6 @@ export default function TodoDetails({ itemId }: TodoDetailsProps) {
         router.push("/");
       } catch (error) {
         console.error("Failed to update todo:", error);
-        // 에러 처리 (예: 사용자에게 알림)
       }
     }
   };
@@ -60,7 +64,6 @@ export default function TodoDetails({ itemId }: TodoDetailsProps) {
         router.push("/");
       } catch (error) {
         console.error("Failed to delete todo:", error);
-        // 에러 처리 (예: 사용자에게 알림)
       }
     }
   };
@@ -73,7 +76,6 @@ export default function TodoDetails({ itemId }: TodoDetailsProps) {
         setImageUrl(url);
       } catch (error) {
         console.error("Failed to upload image:", error);
-        // 에러 처리 (예: 사용자에게 알림)
       }
     }
   };
@@ -81,60 +83,51 @@ export default function TodoDetails({ itemId }: TodoDetailsProps) {
   if (!todo) return <div>Loading...</div>;
 
   return (
-    <form onSubmit={handleSubmit} className="space-y-4">
-      <div>
-        <label className="flex items-center">
-          <input
-            type="checkbox"
-            checked={isCompleted}
-            onChange={(e) => setIsCompleted(e.target.checked)}
-            className="mr-2"
+    <div className="h-[90vh] desktop:w-[80%] flex flex-col ml-auto mr-auto">
+      <form
+        onSubmit={handleSubmit}
+        className="space-y-4 border bg-bgPrimary flex-grow flex flex-col desktop:px-10 desktop:py-5"
+      >
+        <div
+          className={`flex mb-2 p-2 mt-4 items-center justify-center rounded border-2 border-black rounded-3xl ${
+            isCompleted ? "bg-violet-100" : ""
+          }`}
+        >
+          <CheckboxInput
+            isChecked={isCompleted}
+            onToggle={() => setIsCompleted(!isCompleted)}
           />
-          {name}
-        </label>
-      </div>
-      <div>
-        <label htmlFor="memo" className="block mb-1">
-          Memo
-        </label>
-        <textarea
-          id="memo"
-          value={memo}
-          onChange={(e) => setMemo(e.target.value)}
-          className="w-full p-2 border rounded text-black"
-        />
-      </div>
-      <div>
-        <label htmlFor="image" className="block mb-1">
-          Image
-        </label>
-        <input
-          id="image"
-          type="file"
-          accept="image/*"
-          onChange={handleImageUpload}
-          className="w-full p-2 border rounded"
-        />
-        {imageUrl && (
-          <img src={imageUrl} alt="Todo" className="mt-2 max-w-full h-auto" />
-        )}
-      </div>
+          <span className="ml-2 underline underline-offset-2">{name}</span>
+        </div>
 
-      <div>
-        <button
-          type="submit"
-          className="bg-blue-500 text-white p-2 rounded mr-2"
-        >
-          Update Todo
-        </button>
-        <button
-          type="button"
-          onClick={handleDelete}
-          className="bg-red-500 text-white p-2 rounded"
-        >
-          Delete Todo
-        </button>
-      </div>
-    </form>
+        <div className="flex desktop:h-[30%] mobile:h-[100%] desktop:flex-row tablet:flex-col mobile:flex-col desktop:space-x-4 border border-red">
+          <ImageSection imageUrl={imageUrl} onImageUpload={handleImageUpload} />
+          <MemoSection
+            memo={memo}
+            onMemoChange={(e) => setMemo(e.target.value)}
+          />
+        </div>
+
+        <div className="flex justify-end space-x-2">
+          <CustomButton
+            type="submit"
+            bgColor="bg-lime-300"
+            textColor="text-black"
+          >
+            <CheckIcon />
+            수정 완료
+          </CustomButton>
+          <CustomButton
+            type="button"
+            onClick={handleDelete}
+            bgColor="bg-rose-500"
+            textColor="text-white"
+          >
+            <DeleteIcon />
+            삭제하기
+          </CustomButton>
+        </div>
+      </form>
+    </div>
   );
 }
