@@ -13,9 +13,9 @@ const CheckIcon: React.FC<React.SVGProps<SVGSVGElement>> = (props) => {
       <path
         d="M1.95654 4L6.45654 8.5L13.9565 1"
         stroke="#0F172A"
-        stroke-width="2"
-        stroke-linecap="round"
-        stroke-linejoin="round"
+        strokeWidth="2"
+        strokeLinecap="round"
+        strokeLinejoin="round"
       />
     </svg>
   );

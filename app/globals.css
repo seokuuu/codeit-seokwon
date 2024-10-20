@@ -2,14 +2,59 @@
 @tailwind components;
 @tailwind utilities;
 
+@layer base {
+  /* 추가적인 CSS 초기화 */
+  *,
+  *::before,
+  *::after {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+  }
+
+  html {
+    font-size: 16px;
+    -webkit-text-size-adjust: 100%;
+  }
+
+  body {
+    font-family: Arial, Helvetica, sans-serif;
+    line-height: 1.5;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  img,
+  picture,
+  video,
+  canvas,
+  svg {
+    display: block;
+    max-width: 100%;
+  }
+
+  input,
+  button,
+  textarea,
+  select {
+    font: inherit;
+  }
+
+  p,
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    overflow-wrap: break-word;
+  }
+}
+
 @layer components {
   .common-border {
     @apply border-[1px] border-slate-900 shadow-[2px_2px_0px_0px_rgba(15,23,42,1)];
   }
-}
-
-body {
-  font-family: Arial, Helvetica, sans-serif;
 }
 
 @layer utilities {
@@ -22,11 +67,11 @@ body {
   width: 8px;
   height: 8px;
   border-radius: 6px;
-  background: none; /* 스크롤바의 배경 색상 */
+  background: none;
 }
 
 .custom-scrollbar::-webkit-scrollbar-thumb {
-  height: 10%; /* 스크롤바의 길이 */
-  background: #fde68a; /* 스크롤바의 색상 */
+  height: 10%;
+  background: #fde68a;
   border-radius: 10px;
 }

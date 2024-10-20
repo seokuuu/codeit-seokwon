@@ -15,7 +15,7 @@ const ImageSection: React.FC<ImageSectionProps> = ({
   onImageUpload,
 }) => {
   return (
-    <div className="desktop:w-2/5 desktop:h-[100%] mobile:h-[50%] flex flex-col items-center justify-center border-2 border-dashed border-gray-300 rounded-lg relative">
+    <div className="desktop:w-2/5 desktop:h-[100%] mobile:h-[50%] flex flex-col items-center justify-center  rounded-lg relative">
       {imageUrl ? (
         <div className="relative w-full h-full">
           <Image

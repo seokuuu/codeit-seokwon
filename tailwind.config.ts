@@ -35,6 +35,7 @@ module.exports = {
           800: "#92400E",
         },
         bgPrimary: "#FFFFFF",
+        bgGrey: "#F9FAFB",
       },
     },
   },

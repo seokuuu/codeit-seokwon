@@ -13,14 +13,14 @@ const DeleteIcon: React.FC<React.SVGProps<SVGSVGElement>> = (props) => {
       <path
         d="M4.5 4L12.5 12"
         stroke="white"
-        stroke-width="2"
-        stroke-linecap="round"
+        strokeWidth="2"
+        strokeLinecap="round"
       />
       <path
         d="M12.5 4L4.5 12"
         stroke="white"
-        stroke-width="2"
-        stroke-linecap="round"
+        strokeWidth="2"
+        strokeLinecap="round"
       />
     </svg>
   );
