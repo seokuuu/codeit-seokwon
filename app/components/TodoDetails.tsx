@@ -88,7 +88,7 @@ export default function TodoDetails({ itemId }: TodoDetailsProps) {
     }
   };
 
-  //
+  // 이미지를 업로드하는 함수입니다.
   const handleImageUpload = async (e: React.ChangeEvent<HTMLInputElement>) => {
     const fileInput = e.target; // 파일 인풋을 참조
     const file = fileInput.files?.[0];
