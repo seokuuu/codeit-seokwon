@@ -90,16 +90,36 @@ export default function TodoDetails({ itemId }: TodoDetailsProps) {
 
   //
   const handleImageUpload = async (e: React.ChangeEvent<HTMLInputElement>) => {
-    const file = e.target.files?.[0];
+    const fileInput = e.target; // 파일 인풋을 참조
+    const file = fileInput.files?.[0];
+
     if (file) {
-      // 파일 크기 및 이름 검증 로직...
+      const fileSizeInMB = file.size / (1024 * 1024);
+
+      if (fileSizeInMB > 5) {
+        alert("파일 크기가 5MB를 초과합니다. 작은 파일을 업로드해주세요.");
+        fileInput.value = ""; // 파일 인풋을 리셋해 이전 파일을 초기화
+        return;
+      }
+
+      const fileName = file.name;
+      const isEnglish = /^[a-zA-Z._-]+$/.test(fileName);
+
+      if (!isEnglish) {
+        alert("파일 이름은 영어로만 구성되어야 합니다.");
+        fileInput.value = ""; // 파일 인풋을 리셋해 이전 파일을 초기화
+        return;
+      }
+
       try {
         const { url } = await uploadImage(file);
         handleChange("imageUrl", url);
       } catch (error) {
-        console.error("Failed to upload image:", error);
+        console.error("이미지 업로드 실패:", error);
       }
     }
+
+    fileInput.value = ""; // 성공하든 실패하든 파일 인풋을 초기화
   };
 
   if (!todo) return <div>Loading...</div>;
