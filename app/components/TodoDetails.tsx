@@ -16,11 +16,11 @@ interface TodoDetailsProps {
 }
 
 /**
- * 
- * @description TodoDetails 컴포넌트는 특정 Todo의 세부 정보를 보여주는 컴포넌트입니다. 
+ *
+ * @description TodoDetails 컴포넌트는 특정 Todo의 세부 정보를 보여주는 컴포넌트입니다.
  * @param {TodoDetailsProps} { itemId } - Todo의 id를 받아옵니다.
  * @returns {JSX.Element} TodoDetails 컴포넌트를 반환합니다.
- * 
+ *
  */
 
 export default function TodoDetails({ itemId }: TodoDetailsProps) {
@@ -177,7 +177,7 @@ export default function TodoDetails({ itemId }: TodoDetailsProps) {
             />
           ) : (
             <span
-              className="ml-2 underline underline-offset-2"
+              className="text-xl ml-2 underline underline-offset-2"
               onClick={handleSpanClick}
             >
               {name}

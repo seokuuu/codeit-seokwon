@@ -38,7 +38,7 @@ export default function AddTodoForm({ onAddTodo }: AddTodoFormProps) {
         value={name}
         onChange={(e) => setName(e.target.value)}
         placeholder="할 일을 입력해주세요"
-        className="p-2 pl-4 rounded mr-2 desktop:w-[90%] tablet:w-[80%] mobile:w-[85%] common-border rounded-xl outline-none"
+        className="p-2 pl-4  rounded mr-2 desktop:w-[90%] tablet:w-[80%] mobile:w-[85%] common-border rounded-xl outline-none"
       />
       <CustomButton
         type="submit"
@@ -49,9 +49,9 @@ export default function AddTodoForm({ onAddTodo }: AddTodoFormProps) {
         {isMobile ? (
           <PlusIcon />
         ) : (
-          <>
+          <div className="flex justify-center items-center">
             <PlusIcon /> 추가하기
-          </>
+          </div>
         )}
       </CustomButton>
     </form>
