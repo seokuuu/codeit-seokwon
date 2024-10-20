@@ -10,9 +10,19 @@ interface TodoItemProps {
   onUpdate: (updatedTodo: Todo) => void;
 }
 
+/**
+ *
+ * @description TodoItem 컴포넌트는 Todo의 각 항목을 보여주는 컴포넌트입니다.
+ * @param {TodoItemProps} { todo, onUpdate } - Todo와 onUpdate 함수를 받아옵니다.
+ * todo - 할 일 정보
+ * onUpdate - 할 일 업데이트 함수
+ * @returns {JSX.Element} TodoItem 컴포넌트를 반환합니다.
+ */
+
 export default function TodoItem({ todo, onUpdate }: TodoItemProps) {
   const [isCompleted, setIsCompleted] = useState(todo.isCompleted);
 
+  // 완료 여부 토글
   const toggleComplete = async () => {
     const previousState = isCompleted;
     setIsCompleted(!isCompleted); // 즉시 상태 업데이트

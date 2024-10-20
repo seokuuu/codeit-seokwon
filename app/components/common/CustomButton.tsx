@@ -11,6 +11,19 @@ interface CustomButtonProps {
   disabled?: boolean;
 }
 
+/**
+ *
+ * @description CustomButton 컴포넌트는 버튼을 보여주는 컴포넌트입니다.
+ * @param {CustomButtonProps} { bgColor, textColor, children, onClick, type, className, disabled } - bgColor, textColor, children, onClick, type, className, disabled를 받아옵니다.
+ * bgColor - 배경 색상
+ * textColor - 텍스트 색상
+ * children - 버튼 안에 들어갈 내용
+ * onClick - 클릭 이벤트 핸들러
+ * type - 버튼 타입
+ * className - 커스텀 클래스
+ * disabled - 비활성화 여부
+ * @returns {JSX.Element} CustomButton 컴포넌트를 반환합니다.
+ */
 
 const CustomButton: React.FC<CustomButtonProps> = ({
   bgColor = "bg-white",

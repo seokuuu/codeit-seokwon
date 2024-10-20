@@ -5,6 +5,15 @@ interface CheckboxInputProps {
   onToggle: () => void;
 }
 
+/**
+ *
+ * @description CheckboxInput 컴포넌트는 체크박스를 보여주는 컴포넌트입니다.
+ * @param {CheckboxInputProps} { isChecked, onToggle } - isChecked와 onToggle 함수를 받아옵니다.
+ * isChecked - 체크 여부
+ * onToggle - 체크 토글 함수
+ * @returns {JSX.Element} CheckboxInput 컴포넌트를 반환합니다.
+ */
+
 export default function CheckboxInput({
   isChecked,
   onToggle,

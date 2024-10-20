@@ -15,6 +15,14 @@ interface TodoDetailsProps {
   itemId: number;
 }
 
+/**
+ * 
+ * @description TodoDetails 컴포넌트는 특정 Todo의 세부 정보를 보여주는 컴포넌트입니다. 
+ * @param {TodoDetailsProps} { itemId } - Todo의 id를 받아옵니다.
+ * @returns {JSX.Element} TodoDetails 컴포넌트를 반환합니다.
+ * 
+ */
+
 export default function TodoDetails({ itemId }: TodoDetailsProps) {
   const [todo, setTodo] = useState<Todo | null>(null);
   const [originalTodo, setOriginalTodo] = useState<Todo | null>(null);
@@ -26,7 +34,7 @@ export default function TodoDetails({ itemId }: TodoDetailsProps) {
   const [isEdit, setIsEdit] = useState(false);
   const router = useRouter();
 
-  //
+  // itemId가 변경될 때마다 todo를 가져와 상태 업데이트
   useEffect(() => {
     const fetchTodo = async () => {
       try {
@@ -44,6 +52,7 @@ export default function TodoDetails({ itemId }: TodoDetailsProps) {
     fetchTodo();
   }, [itemId]);
 
+  // 수정 여부 업데이트
   useEffect(() => {
     if (originalTodo) {
       setIsEdit(
@@ -54,6 +63,7 @@ export default function TodoDetails({ itemId }: TodoDetailsProps) {
     }
   }, [isCompleted, memo, imageUrl, originalTodo]);
 
+  // 수정 완료 버튼 클릭
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     if (todo) {
@@ -74,6 +84,7 @@ export default function TodoDetails({ itemId }: TodoDetailsProps) {
     }
   };
 
+  // 삭제 버튼 클릭
   const handleDelete = async () => {
     if (todo) {
       try {
@@ -85,20 +96,24 @@ export default function TodoDetails({ itemId }: TodoDetailsProps) {
     }
   };
 
+  // 이름 입력창 값 변경
   const handleNameChange = (event: {
     target: { value: SetStateAction<string> };
   }) => {
     setName(event.target.value);
   };
 
+  // 이름 클릭
   const handleSpanClick = () => {
     setIsEditing(true);
   };
 
+  // 이름 입력창 blur
   const handleInputBlur = () => {
     setIsEditing(false);
   };
 
+  // 이미지 업로드
   const handleImageUpload = async (e: React.ChangeEvent<HTMLInputElement>) => {
     const fileInput = e.target; // 파일 인풋을 참조
     const file = fileInput.files?.[0];

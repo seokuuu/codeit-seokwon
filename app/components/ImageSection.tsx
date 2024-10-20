@@ -10,9 +10,16 @@ interface ImageSectionProps {
   onImageUpload: (e: React.ChangeEvent<HTMLInputElement>) => void;
 }
 
+/**
+ *
+ * @description ImageSection 컴포넌트는 이미지를 보여주는 컴포넌트입니다.
+ * @param {ImageSectionProps} { imageUrl, onImageUpload } - imageUrl과 onImageUpload 함수를 받아옵니다.
+ * @returns {JSX.Element} ImageSection 컴포넌트를 반환합니다.
+ */
+
 const ImageSection: React.FC<ImageSectionProps> = ({
-  imageUrl,
-  onImageUpload,
+  imageUrl, // 이미지 URL
+  onImageUpload, // 이미지 업로드 핸들러
 }) => {
   return (
     <div className="desktop:w-2/5 desktop:h-[100%] mobile:h-[50%] flex flex-col items-center justify-center  rounded-lg relative">

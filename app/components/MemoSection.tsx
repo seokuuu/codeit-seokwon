@@ -5,13 +5,25 @@ interface MemoSectionProps {
   onMemoChange: (e: React.ChangeEvent<HTMLTextAreaElement>) => void;
 }
 
+/**
+ * 
+ * @description MemoSection 컴포넌트는 메모를 보여주는 컴포넌트입니다.
+ * @param {MemoSectionProps} { memo, onMemoChange } - memo와 onMemoChange 함수를 받아옵니다.
+ * memo: 메모 내용
+ * onMemoChange: 메모 변경 핸들러
+ * @returns {JSX.Element} MemoSection 컴포넌트를 반환합니다.
+
+ */
+
 const MemoSection: React.FC<MemoSectionProps> = ({ memo, onMemoChange }) => {
   const [isEditing, setIsEditing] = useState(false);
 
+  // 메모 클릭 시 편집 모드로 전환
   const handleDivClick = () => {
     setIsEditing(true);
   };
 
+  // 텍스트 에어리어 포커스 아웃 시 편집 모드 해제
   const handleBlur = () => {
     setIsEditing(false);
   };

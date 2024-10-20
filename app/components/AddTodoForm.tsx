@@ -9,6 +9,15 @@ interface AddTodoFormProps {
   onAddTodo: (name: string) => Promise<void>;
 }
 
+/**
+ * 
+ * @description AddTodoForm 컴포넌트는 할 일을 추가하는 폼을 보여주는 컴포넌트입니다.
+ * @param {AddTodoFormProps} { onAddTodo } - onAddTodo 함수를 받아옵니다.
+ * onAddTodo - 할 일 추가 함수
+ * @returns {JSX.Element} AddTodoForm 컴포넌트를 반환합니다.
+
+ */
+
 export default function AddTodoForm({ onAddTodo }: AddTodoFormProps) {
   const { isMobile } = useMobile();
 
