@@ -1,16 +1,14 @@
 import React, { useState } from "react";
 
 interface MemoSectionProps {
-  memo: string;
-  onMemoChange: (e: React.ChangeEvent<HTMLTextAreaElement>) => void;
+  memo: string; // 메모 내용
+  onMemoChange: (e: React.ChangeEvent<HTMLTextAreaElement>) => void; //  메모 변경 핸들러
 }
 
 /**
  * 
  * @description MemoSection 컴포넌트는 메모를 보여주는 컴포넌트입니다.
  * @param {MemoSectionProps} { memo, onMemoChange } - memo와 onMemoChange 함수를 받아옵니다.
- * memo: 메모 내용
- * onMemoChange: 메모 변경 핸들러
  * @returns {JSX.Element} MemoSection 컴포넌트를 반환합니다.
 
  */

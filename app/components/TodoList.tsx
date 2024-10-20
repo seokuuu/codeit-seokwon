@@ -6,16 +6,14 @@ import TodoEmpty from "./icons/TodoEmpty";
 import TodoItem from "./TodoItem";
 
 interface TodoListProps {
-  todos: Todo[];
-  onUpdateTodo: (updatedTodo: Todo) => void;
+  todos: Todo[]; // 할 일 목록
+  onUpdateTodo: (updatedTodo: Todo) => void; // 할 일 업데이트 함수
 }
 
 /**
  * 
  * @description TodoList 컴포넌트는 TodoItem 컴포넌트를 렌더링하는 컴포넌트입니다.
  * @param {TodoListProps} { todos, onUpdateTodo } - todos와 onUpdateTodo 함수를 받아옵니다.
- * todos - 할 일 목록
- * onUpdateTodo - 할 일 업데이트 함수
  * @returns {JSX.Element} TodoList 컴포넌트를 반환합니다.
  
  */
