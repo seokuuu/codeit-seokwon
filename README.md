@@ -48,7 +48,7 @@ Next.js, TypeScript, Tailwind CSS를 사용하여 구축한 간단하고 직관�
 
 ## 📸 사용 방법
 
-![스크린샷 1](https://www.notion.so/image/https%3A%2F%2Fprod-files-secure.s3.us-west-2.amazonaws.com%2F88af2cc4-6c81-4f88-a2fb-80382230bff4%2F7ba0d3f7-0c34-4254-a017-a05654bb1c9d%2Fimage.png?table=block&id=12585e95-b3ef-8046-af0b-fe866213b5e6&spaceId=88af2cc4-6c81-4f88-a2fb-80382230bff4&width=2000&userId=a44323bc-9430-45cd-a333-86e4e21f5cb0&cache=v2)
+![main](https://github.com/user-attachments/assets/1645b3a5-e54e-47fb-a7d3-44f9d06304b6)
 _메인 화면 및 Todo 추가 / 완료_
 
 1. Input에 할 일을 입력하고 "추가하기" 버튼이나 Enter 키를 입력 시, TODO 목록에 추가됩니다.
@@ -56,7 +56,8 @@ _메인 화면 및 Todo 추가 / 완료_
 3. 반대로 DONE에서 체크 클릭 시, TO DO 목록으로 이동합니다.
 4. 목록 Text 클릭 시, 상세 페이지로 진입합니다.
 
-![스크린샷 2](https://file.notion.so/f/f/88af2cc4-6c81-4f88-a2fb-80382230bff4/44ab6200-f55c-4923-b005-5ad18bf2b3a6/image.png?table=block&id=12585e95-b3ef-8059-9657-d03ea99fc90a&spaceId=88af2cc4-6c81-4f88-a2fb-80382230bff4&expirationTimestamp=1729555200000&signature=7fqX4ZBiSGfdAxv--fAO82JGnRZn4yeM2gzM2LPqpaY&downloadName=image.png)
+![detail](https://github.com/user-attachments/assets/e728a118-58c0-4f66-9016-ff29981ae11e)
+
 _Todo 상세_
 
 1. 상단 체크 박스로 위와 동일한 TODO / DONE 처리가 가능합니다.
