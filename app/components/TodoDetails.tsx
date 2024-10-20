@@ -114,7 +114,7 @@ export default function TodoDetails({ itemId }: TodoDetailsProps) {
       }
 
       const fileName = file.name;
-      const isEnglish = /^[a-zA-Z0-9._-]+$/.test(fileName);
+      const isEnglish = /^[a-zA-Z._-]+$/.test(fileName);
 
       if (!isEnglish) {
         alert("파일 이름은 영어로만 구성되어야 합니다.");
