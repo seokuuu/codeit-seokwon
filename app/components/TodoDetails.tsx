@@ -1,7 +1,7 @@
 "use client";
 
 import { useRouter } from "next/navigation";
-import { useEffect, useState } from "react";
+import { SetStateAction, useEffect, useState } from "react";
 import { deleteTodo, getTodoById, updateTodo, uploadImage } from "../lib/api";
 import { Todo } from "../types/todo";
 import CheckboxInput from "./common/CheckboxInput";
@@ -19,12 +19,14 @@ export default function TodoDetails({ itemId }: TodoDetailsProps) {
   const [todo, setTodo] = useState<Todo | null>(null);
   const [originalTodo, setOriginalTodo] = useState<Todo | null>(null);
   const [name, setName] = useState("");
+  const [isEditing, setIsEditing] = useState(false);
   const [memo, setMemo] = useState("");
   const [imageUrl, setImageUrl] = useState("");
   const [isCompleted, setIsCompleted] = useState(false);
   const [isEdit, setIsEdit] = useState(false);
   const router = useRouter();
 
+  //
   useEffect(() => {
     const fetchTodo = async () => {
       try {
@@ -83,16 +85,53 @@ export default function TodoDetails({ itemId }: TodoDetailsProps) {
     }
   };
 
+  const handleNameChange = (event: {
+    target: { value: SetStateAction<string> };
+  }) => {
+    setName(event.target.value);
+  };
+
+  const handleSpanClick = () => {
+    setIsEditing(true);
+  };
+
+  const handleInputBlur = () => {
+    setIsEditing(false);
+  };
+
   const handleImageUpload = async (e: React.ChangeEvent<HTMLInputElement>) => {
-    const file = e.target.files?.[0];
+    const fileInput = e.target; // 파일 인풋을 참조
+    const file = fileInput.files?.[0];
+
     if (file) {
+      const fileSizeInMB = file.size / (1024 * 1024);
+
+      if (fileSizeInMB > 5) {
+        alert("파일 크기가 5MB를 초과합니다. 작은 파일을 업로드해주세요.");
+        // 파일 인풋을 리셋해 이전 파일을 초기화
+        fileInput.value = "";
+        return;
+      }
+
+      const fileName = file.name;
+      const isEnglish = /^[a-zA-Z0-9._-]+$/.test(fileName);
+
+      if (!isEnglish) {
+        alert("파일 이름은 영어로만 구성되어야 합니다.");
+        // 파일 인풋을 리셋해 이전 파일을 초기화
+        fileInput.value = "";
+        return;
+      }
+
       try {
         const { url } = await uploadImage(file);
         setImageUrl(url);
       } catch (error) {
-        console.error("Failed to upload image:", error);
+        console.error("이미지 업로드 실패:", error);
       }
     }
+
+    fileInput.value = "";
   };
 
   if (!todo) return <div>Loading...</div>;
@@ -112,7 +151,23 @@ export default function TodoDetails({ itemId }: TodoDetailsProps) {
             isChecked={isCompleted}
             onToggle={() => setIsCompleted(!isCompleted)}
           />
-          <span className="ml-2 underline underline-offset-2">{name}</span>
+          {isEditing ? (
+            <input
+              type="text"
+              value={name}
+              onChange={handleNameChange}
+              onBlur={handleInputBlur}
+              autoFocus
+              className="p-2 border border-gray-300 rounded"
+            />
+          ) : (
+            <span
+              className="ml-2 underline underline-offset-2"
+              onClick={handleSpanClick}
+            >
+              {name}
+            </span>
+          )}
         </div>
 
         <div className="flex desktop:h-[30%] mobile:h-[100%] desktop:flex-row tablet:flex-col mobile:flex-col desktop:space-x-4 border border-red">
