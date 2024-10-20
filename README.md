@@ -1,6 +1,6 @@
 # Todo List 애플리케이션
 
-![프로젝트 로고/스크린샷](https://www.notion.so/image/https%3A%2F%2Fprod-files-secure.s3.us-west-2.amazonaws.com%2F88af2cc4-6c81-4f88-a2fb-80382230bff4%2F7ba0d3f7-0c34-4254-a017-a05654bb1c9d%2Fimage.png?table=block&id=12585e95-b3ef-8046-af0b-fe866213b5e6&spaceId=88af2cc4-6c81-4f88-a2fb-80382230bff4&width=2000&userId=a44323bc-9430-45cd-a333-86e4e21f5cb0&cache=v2)
+![프로젝트 로고/스크린샷](https://file.notion.so/f/f/88af2cc4-6c81-4f88-a2fb-80382230bff4/7ba0d3f7-0c34-4254-a017-a05654bb1c9d/image.png?table=block&id=12585e95-b3ef-8046-af0b-fe866213b5e6&spaceId=88af2cc4-6c81-4f88-a2fb-80382230bff4&expirationTimestamp=1729555200000&signature=KsbRJuNhKwmtlugNzq7Fx4IA4RKxc4k3-fEyptBOBfA&downloadName=image.png)
 
 Next.js, TypeScript, Tailwind CSS를 사용하여 구축한 간단하고 직관적인 Todo List 애플리케이션입니다. 이 프로젝트는 사용자가 할 일을 효율적으로 관리할 수 있도록 추가, 완료, 삭제 기능을 제공합니다.
 
