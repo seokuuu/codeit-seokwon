@@ -5,8 +5,8 @@ import HeaderText from "./icons/HeaderText";
 
 export default function Header() {
   return (
-    <header className="container mx-auto h-[40px] w-full flex items-center">
-      <div className="flex items-center">
+    <header className="h-[45px] w-full border border-b-1 bg-bgPrimary">
+      <div className="flex items-center container mx-auto">
         <Link href="/" className="flex items-center">
           <HeaderLogo />
         </Link>

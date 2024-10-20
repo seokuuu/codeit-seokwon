@@ -98,7 +98,7 @@ export default function TodoDetails({ itemId }: TodoDetailsProps) {
   if (!todo) return <div>Loading...</div>;
 
   return (
-    <div className="h-[calc(100vh-41px)] desktop:w-[80%] flex flex-col ml-auto mr-auto">
+    <div className="h-[calc(100vh-45px)] desktop:w-[80%] flex flex-col ml-auto mr-auto">
       <form
         onSubmit={handleSubmit}
         className="space-y-1 desktop:border desktop:bg-bgPrimary mobile:bgGrey flex-grow flex flex-col desktop:px-10 desktop:py-5"
