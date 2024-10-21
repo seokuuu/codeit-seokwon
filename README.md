@@ -30,20 +30,20 @@ Next.js, TypeScript, Tailwind CSS를 사용하여 구축한 간단하고 직관�
 
 1. 저장소를 클론합니다
    git clone https://github.com/seokuuu/codeit-seokwon.git
-   Copy
+   
 2. 프로젝트 디렉토리로 이동합니다
    cd todo-list-app
-   Copy
+   
 3. 필요한 패키지를 설치합니다
    npm install
    또는
    yarn install
-   Copy
+   
 4. 개발 서버를 실행합니다
    npm run dev
    또는
    yarn dev
-   Copy
+   
 5. 브라우저에서 `http://localhost:3000`을 열어 애플리케이션을 확인합니다.
 
 ## 📸 사용 방법
